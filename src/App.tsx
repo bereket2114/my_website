@@ -121,8 +121,7 @@ function App() {
           <div className="hero-image-wrapper">
             <div className="hero-shape-yellow"></div>
             <div className="hero-image-container">
-               <div className="photo-placeholder-text">Your Photo Here</div>
-               <img src="/profile.jpg" alt="Bereket" className="hero-img" onError={(e) => { e.currentTarget.style.display = 'none'; }} />
+               <img src="/profile-latest.jpg" alt="Bereket" className="hero-img" onError={(e) => { e.currentTarget.style.display = 'none'; }} />
                <div className="photo-overlay">
                  <span>AVAILABLE FOR NEW ROLES</span>
                </div>

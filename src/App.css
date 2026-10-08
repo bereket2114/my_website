@@ -184,6 +184,9 @@ body {
   object-fit: cover;
   position: relative;
   z-index: 1;
+  /* Professional Photo Edit styling */
+  filter: contrast(1.1) saturate(0.85) sepia(0.1) brightness(0.95);
+  transform: scale(1.05); /* Slight zoom for tighter framing */
 }
 
 .photo-overlay {
