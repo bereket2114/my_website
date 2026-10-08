@@ -1,0 +1,178 @@
+:root {
+  /* Exact Colors from Design Reference */
+  --bg-primary: #f5eedc; /* Creamy yellow off-white */
+  --bg-secondary: #ebdcc2; /* Slightly darker cream for active states */
+  --bg-dark: #1e1e1c; /* Charcoal dark background for services */
+  
+  --text-primary: #1e1e1c; /* Dark charcoal text */
+  --text-secondary: #7a7a78; /* Muted text */
+  --text-light: #f5eedc; /* Light text for dark sections */
+
+  /* Accents */
+  --accent-terracotta: #d75c37; /* The signature orange/red */
+  --accent-yellow: #e5b340; /* The yellow accent */
+  
+  --border-color: rgba(30, 30, 28, 0.1);
+  --border-light: rgba(245, 238, 220, 0.15);
+
+  /* Typography */
+  --font-sans: 'Inter', system-ui, sans-serif;
+  --font-heading: 'Playfair Display', Georgia, serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  /* Animation */
+  --transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-normal: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  
+  /* Shadows */
+  --shadow-sm: 0 4px 6px -1px rgba(30, 30, 28, 0.05), 0 2px 4px -1px rgba(30, 30, 28, 0.03);
+  --shadow-md: 0 10px 15px -3px rgba(30, 30, 28, 0.05), 0 4px 6px -2px rgba(30, 30, 28, 0.03);
+}
+
+/* Base Setup */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  color: var(--text-primary);
+  line-height: 1.1;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+a:hover {
+  color: var(--accent-terracotta);
+}
+
+p {
+  margin-bottom: 1rem;
+}
+
+/* Layout Classes */
+.container {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 4rem;
+}
+
+.section {
+  padding: 8rem 0;
+}
+
+.section-dark {
+  background-color: var(--bg-dark);
+  color: var(--text-light);
+}
+
+.section-dark h1, .section-dark h2, .section-dark h3 {
+  color: var(--text-light);
+}
+
+.section-terracotta {
+  background-color: var(--accent-terracotta);
+  color: var(--text-light);
+}
+
+.section-terracotta h1, .section-terracotta h2, .section-terracotta h3, .section-terracotta p {
+  color: var(--text-light);
+}
+
+/* Utilities */
+.text-terracotta {
+  color: var(--accent-terracotta);
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1.5rem;
+  font-family: var(--font-heading);
+  font-weight: 600;
+  border-radius: 8px;
+  transition: all var(--transition-normal);
+  cursor: pointer;
+  border: none;
+  font-size: 1rem;
+  gap: 0.5rem;
+}
+
+.btn-primary {
+  background: var(--gradient-text);
+  color: white;
+  box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(99, 102, 241, 0.5);
+}
+
+.btn-secondary {
+  background: var(--glass-bg);
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
+}
+
+.btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: var(--border-hover);
+  transform: translateY(-2px);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.delay-100 { animation-delay: 100ms; }
+.delay-200 { animation-delay: 200ms; }
+.delay-300 { animation-delay: 300ms; }
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+  border-radius: 5px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--border-hover);
+}
