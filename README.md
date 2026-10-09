@@ -1,16 +1,14 @@
 # Bereket Woldemariyam — Full Stack Web Developer
 
-Welcome to my personal developer portfolio. I am a Backend and Full-Stack Web Developer specializing in building robust server-side applications, designing complex databases, and crafting seamless APIs.
-
-This portfolio is built to reflect a clean engineering mindset through a minimal, editorial, and highly performant frontend.
+## Overview
+Welcome to the source code for my personal developer portfolio. This repository showcases my technical focus, problem-solving approach, and the real-world systems I have engineered. As a Backend and Full-Stack Web Developer, I focus on building robust server-side applications, designing database schemas, and crafting seamless APIs, presented here through a minimal, highly performant frontend.
 
 ## Portfolio Preview
 
-![Portfolio Preview](./portfolio-linkedin-thumbnail.png)
+![Portfolio Preview](./screenshots/portfolio-linkedin-thumbnail.png)
 
-## About
-
-This project is my central professional presence on the web. It highlights my technical focus, approach to problem-solving, and showcases real-world systems I've built. My development philosophy bridges the gap between raw data processing and exceptional user experiences—engineering solutions that are secure, scalable, and maintainable.
+## Live Portfolio
+**[View Live Portfolio](https://my-professional-portfolio-lime.vercel.app/)**
 
 ## Featured Projects
 
@@ -37,29 +35,24 @@ A complete vehicle reservation platform and admin dashboard.
 
 ## Services
 
-I offer specialized development services focusing on architecture and integration:
-
 * **API Architecture:** Research-driven REST API designs that define data flow and ensure security.
-* **Database Design:** Memorable NoSQL/SQL database schemas designed to scale effortlessly.
-* **Full Stack Dev:** Flexible web systems combining robust backend logic with clean frontend rendering.
-* **System Integration:** Bold, thoughtful integrations bridging third-party services.
+* **Database Design:** NoSQL/SQL database schemas designed to scale.
+* **Full Stack Dev:** Web systems combining robust backend logic with clean frontend rendering.
+* **System Integration:** Integrations bridging third-party services.
 
 ## Technologies Used
 
-* **Frontend Framework:** React 19, TypeScript
+* **Frontend:** React 19, TypeScript
 * **Build Tool:** Vite
-* **Styling:** Custom CSS (Vanilla CSS, CSS Grid/Flexbox)
+* **Styling:** Vanilla CSS (Grid/Flexbox)
 * **Icons:** Lucide React
 * **Linting:** Oxlint
 
-*(Note: The projects showcased in the portfolio utilize Node.js, Express, and MongoDB extensively on the backend).*
-
 ## Portfolio Features
-
 * **Responsive Design:** Fluid layout optimized for mobile, tablet, and desktop viewports.
 * **Accessible Modals:** Interactive project detail overlays with keyboard-friendly navigation.
 * **Dynamic Content Filtering:** Functional category filters (Backend, Full Stack) without page reloads.
-* **Custom Interactions:** Smooth animations, custom cursor logic (with touch-device fallbacks), and reduced-motion support.
+* **Custom Interactions:** Custom cursor logic (with touch-device fallbacks) and reduced-motion support.
 
 ## Getting Started
 
@@ -86,17 +79,17 @@ To run this portfolio locally:
 
 ## Build
 
-To build the project for production:
-
+To build the project for production, run:
 ```bash
 npm run build
 ```
-This will run the TypeScript compiler (`tsc -b`) and generate optimized static assets using Vite (`vite build`) in the `dist/` directory.
+This executes the TypeScript compiler (`tsc -b`) and generates optimized static assets using Vite (`vite build`) in the `dist/` directory.
 
 ## Project Structure
 
 ```
-├── public/                 # Static assets (images, etc.)
+├── public/                 # Static assets (images, fonts)
+├── screenshots/            # Repository documentation assets (thumbnails)
 ├── src/
 │   ├── App.tsx             # Main application component and state logic
 │   ├── App.css             # Component-specific styles and media queries
@@ -111,6 +104,7 @@ This will run the TypeScript compiler (`tsc -b`) and generate optimized static a
 
 ## Contact
 
+* **Portfolio:** [https://my-professional-portfolio-lime.vercel.app/](https://my-professional-portfolio-lime.vercel.app/)
+* **GitHub:** [https://github.com/bereket2114](https://github.com/bereket2114)
+* **LinkedIn:** [https://www.linkedin.com/in/bereket-woldemariyam-61377b437/](https://www.linkedin.com/in/bereket-woldemariyam-61377b437/)
 * **Email:** bereketwoldemariam369@gmail.com
-* **LinkedIn:** [bereket-woldemariyam](https://www.linkedin.com/in/bereket-woldemariyam)
-* **GitHub:** [bereket2114](https://github.com/bereket2114)
