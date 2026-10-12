@@ -1,9 +1,10 @@
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, Menu, X } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import './App.css';
 
 function App() {
   const [activeSection, setActiveSection] = useState('home');
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [cursorPos, setCursorPos] = useState({ x: 0, y: 0 });
   const [cursorState, setCursorState] = useState<'default' | 'text' | 'image'>('default');
 
@@ -47,6 +48,30 @@ function App() {
       window.removeEventListener('mousemove', updateCursor);
       window.removeEventListener('mouseover', handleMouseOver);
     };
+  }, []);
+
+  // Lock body scroll when mobile menu is active
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isMobileMenuOpen]);
+
+  // Handle escape key to close overlays
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        setIsMobileMenuOpen(false);
+        setSelectedProjectId(null);
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
   }, []);
 
   const projects = [
@@ -154,6 +179,8 @@ function App() {
       <nav className="nav-bar glass-nav">
         <div className="nav-container">
           <div className="nav-brand">BEREKET W.</div>
+
+          {/* Desktop Nav Links */}
           <div className="nav-links">
             <a href="#home" className={activeSection === 'home' ? 'active' : ''}>HOME</a>
             <a href="#about" className={activeSection === 'about' ? 'active' : ''}>ABOUT</a>
@@ -161,17 +188,126 @@ function App() {
             <a href="#projects" className={activeSection === 'projects' ? 'active' : ''}>PROJECTS</a>
             <a href="#contact" className={activeSection === 'contact' ? 'active' : ''}>CONTACT</a>
           </div>
+
+          {/* Desktop Nav Actions */}
           <div className="nav-actions">
-            <a href="mailto:bereketwoldemariam369@gmail.com" className="btn btn-yellow">LET'S WORK TOGETHER <ArrowRight size={16} /></a>
+            <a href="mailto:bereketwoldemariam369@gmail.com" className="btn btn-yellow">
+              LET'S WORK TOGETHER <ArrowRight size={16} />
+            </a>
           </div>
+
+          {/* Mobile Hamburger Toggle Button */}
+          <button 
+            className={`hamburger-btn ${isMobileMenuOpen ? 'is-active' : ''}`}
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            aria-label={isMobileMenuOpen ? "Close navigation menu" : "Open navigation menu"}
+            aria-expanded={isMobileMenuOpen}
+            aria-controls="mobile-nav-drawer"
+          >
+            {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
         </div>
       </nav>
+
+      {/* Mobile Navigation Drawer */}
+      <div 
+        id="mobile-nav-drawer" 
+        className={`mobile-nav-drawer ${isMobileMenuOpen ? 'open' : ''}`}
+        role="dialog"
+        aria-modal="true"
+        aria-label="Mobile Navigation"
+      >
+        <div 
+          className="mobile-nav-backdrop" 
+          onClick={() => setIsMobileMenuOpen(false)} 
+          aria-hidden="true" 
+        />
+        <div className="mobile-nav-panel">
+          <div className="mobile-nav-header">
+            <div className="nav-brand">BEREKET W.</div>
+            <button 
+              className="mobile-drawer-close"
+              onClick={() => setIsMobileMenuOpen(false)}
+              aria-label="Close navigation menu"
+            >
+              <X size={22} />
+            </button>
+          </div>
+
+          <div className="mobile-nav-body">
+            <nav className="mobile-nav-links" aria-label="Mobile Navigation Links">
+              <a 
+                href="#home" 
+                className={`mobile-nav-item ${activeSection === 'home' ? 'active' : ''}`}
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                <span className="mobile-nav-num">01</span>
+                <span className="mobile-nav-label">HOME</span>
+                <ArrowRight size={18} className="mobile-nav-arrow" />
+              </a>
+              <a 
+                href="#about" 
+                className={`mobile-nav-item ${activeSection === 'about' ? 'active' : ''}`}
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                <span className="mobile-nav-num">02</span>
+                <span className="mobile-nav-label">ABOUT</span>
+                <ArrowRight size={18} className="mobile-nav-arrow" />
+              </a>
+              <a 
+                href="#services" 
+                className={`mobile-nav-item ${activeSection === 'services' ? 'active' : ''}`}
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                <span className="mobile-nav-num">03</span>
+                <span className="mobile-nav-label">SERVICES</span>
+                <ArrowRight size={18} className="mobile-nav-arrow" />
+              </a>
+              <a 
+                href="#projects" 
+                className={`mobile-nav-item ${activeSection === 'projects' ? 'active' : ''}`}
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                <span className="mobile-nav-num">04</span>
+                <span className="mobile-nav-label">PROJECTS</span>
+                <ArrowRight size={18} className="mobile-nav-arrow" />
+              </a>
+              <a 
+                href="#contact" 
+                className={`mobile-nav-item ${activeSection === 'contact' ? 'active' : ''}`}
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                <span className="mobile-nav-num">05</span>
+                <span className="mobile-nav-label">CONTACT</span>
+                <ArrowRight size={18} className="mobile-nav-arrow" />
+              </a>
+            </nav>
+          </div>
+
+          <div className="mobile-nav-footer">
+            <a 
+              href="mailto:bereketwoldemariam369@gmail.com" 
+              className="btn btn-yellow mobile-cta-btn"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              LET'S WORK TOGETHER <ArrowRight size={16} />
+            </a>
+            <div className="mobile-social-bar">
+              <a href="https://github.com/bereket2114" target="_blank" rel="noreferrer">GitHub</a>
+              <span className="social-sep">•</span>
+              <a href="https://www.linkedin.com/in/bereket-woldemariyam" target="_blank" rel="noreferrer">LinkedIn</a>
+              <span className="social-sep">•</span>
+              <a href="mailto:bereketwoldemariam369@gmail.com">Email</a>
+            </div>
+          </div>
+        </div>
+      </div>
 
       {/* Hero Section */}
       <section className="hero-section" id="home">
         <div className="container hero-container">
           <div className="hero-content">
-            <div className="hero-badge">BACKEND & FULL-STACK DEVELOPER ✦</div>
+            <div className="hero-badge">BACKEND & FULL-STACK DEVELOPER</div>
             <h1 className="hero-title">
               BEREKET<br/>WOLDEMARIYAM
             </h1>
